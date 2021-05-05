@@ -1,6 +1,7 @@
 package main
 
 import (
+	"../util"
 	"fmt"
 )
 
@@ -35,7 +36,7 @@ func minCoins(target int) int {
 			decrice2 := dp[i-2] + 1
 			decrice5 := dp[i-5] + 1
 			decrice7 := dp[i-7] + 1
-			result = min(min(decrice2, decrice5), decrice7)
+			result = util.Min(util.Min(decrice2, decrice5), decrice7)
 			if result >= UnReachable {
 				dp[i] = UnReachable
 			} else {
@@ -49,13 +50,6 @@ func minCoins(target int) int {
 	} else {
 		return result
 	}
-}
-
-func min(a int, b int) int {
-	if a < b && a > 0 {
-		return a
-	}
-	return b
 }
 
 func main() {
